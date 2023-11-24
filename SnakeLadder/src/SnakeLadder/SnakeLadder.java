@@ -155,6 +155,21 @@ class SnakeNLadder
         return player;
     }
 
+    
+	/*
+	 * @desc:This method reports the number of times 
+	 * the dice was played to win the game 
+	 * and also the position after every dice roll
+	 */
+    public void report()
+    {
+    	System.out.println("\nTotal rolls to win the game = "+rolls);
+    	System.out.println("Positions of player 1 and 2 after each roll :-");
+    	for(int i=0;i<rolls;i++)
+    	{
+    		System.out.println(pos1.get(i)+" "+pos2.get(i));
+    	}
+    }
  	
 }
 
