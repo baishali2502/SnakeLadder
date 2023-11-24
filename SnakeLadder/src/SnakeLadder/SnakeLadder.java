@@ -112,6 +112,49 @@ class SnakeNLadder
     {
         return WINPOINT == player;
     }
+    
+    /*
+	 * @desc:This method calculates the position of the player based on his current
+	 *       position and generated dice value.
+	 * 
+	 *       It first checks that if new position value is greater than WINPOINT, then it
+	 *       will again set it to old position. In SnakeNLadder to win the race, your
+	 *       final position value must match the WINPOINT. It can't be less or more.
+	 * 
+	 * 
+	 *       Then it will check for snake and ladder Hashmap. If it finds any key equals
+	 *       to the current position, then it will change the player value to respective
+	 *       Hashmap value.
+	 *       
+	 *@param: player -->current position of player
+	 *        dicevalue--->value of dice 
+	 * 
+	 *@returns: int --> newpostion of player after dice is rolled
+	 */
+    public int calculatePlayerValue(int player, int diceValue)
+    {
+        player = player + diceValue;
+          
+        if(player > WINPOINT)
+        {
+            player = player - diceValue;
+            return player;
+        }
+          
+        if(null!=snake.get(player))
+        {
+            System.out.println("swallowed by snake");
+            player= snake.get(player);
+        }
+          
+        if(null!=ladder.get(player))
+        {
+            System.out.println("climb up the ladder");
+            player= ladder.get(player);
+        }
+        return player;
+    }
+
  	
 }
 
