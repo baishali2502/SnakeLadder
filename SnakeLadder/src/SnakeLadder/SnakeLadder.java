@@ -106,6 +106,13 @@ class SnakeNLadder
  		return (n == 0 ? 1 : n);
  	}
  	
+ 	
+ 	//@desc: returns true, if the player value reaches to WINPOINT.
+    public boolean isWin(int player)
+    {
+        return WINPOINT == player;
+    }
+ 	
 }
 
 
