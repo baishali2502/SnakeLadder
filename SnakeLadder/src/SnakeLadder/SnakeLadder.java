@@ -37,6 +37,65 @@ class SnakeNLadder
      //List of positions of player1 & player2 throughout the game
      ArrayList<Integer> pos1 = new ArrayList<>();
      ArrayList<Integer> pos2 = new ArrayList<>();
+     
+     
+		/*
+		 * @desc:This method is used to start the game. This method keeps running until any
+		 * player reaches to WINPOINT.
+		 * 
+		 * Players need to press 'r' key to call rollDice() method. currentPlayer keeps
+		 * on changing after each rollDice() call.
+		 */
+     public void startGame()
+     {
+     	//positions of player 1 & 2 are initially 0
+         int player1 =0, player2=0;
+         
+         int currentPlayer=-1; // denotes player 1 
+         Scanner s = new Scanner(System.in);
+         String str;
+         int diceValue =0;
+         while(player1<WINPOINT && player2<WINPOINT)
+         {
+             System.out.println(currentPlayer==-1?"\n\nFIRST PLAYER TURN":"\n\nSECOND PLAYER TURN");
+             System.out.println("Press r to roll Dice");
+             str = s.next();
+             diceValue = rollDice();
+             System.out.println("Dice value = "+diceValue);
+             rolls++;  
+               
+             if(currentPlayer == -1)
+             {
+                 player1 = calculatePlayerValue(player1,diceValue);
+                 System.out.println("First Player :: " + player1);
+                 System.out.println("Second Player :: " + player2);
+                 System.out.println("------------------");
+                 pos1.add(player1);
+                 pos2.add(player2);
+                 if(isWin(player1))
+                 {
+                     System.out.println("First player wins");
+                     return;
+                 }
+             }
+             else
+             {
+                 player2 = calculatePlayerValue(player2,diceValue);
+                 System.out.println("First Player :: " + player1);
+                 System.out.println("Second Player :: " + player2);
+                 System.out.println("------------------");
+                 pos1.add(player1);
+                 pos2.add(player2);
+                 if(isWin(player2))
+                 {
+                     System.out.println("Second player wins");
+                     return;
+                 }
+             }
+               
+             currentPlayer= -currentPlayer;     
+         }
+     }
 }
 
 
